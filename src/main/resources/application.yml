@@ -7,8 +7,6 @@ langchain4j:
       base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
       api-key: sk-321bce68acd3439985428b6202f8f766
       model-name: deepseek-v3
-
-
 #      api-key: sk-rhpWsFiunpG1oKjy3a8e55760477442b8f0688Db9b0715C2
 #      model-name: gpt-3.5-turbo
       log-requests: true
@@ -27,7 +25,12 @@ langchain4j:
       chat-model:
         api-key: sk-321bce68acd3439985428b6202f8f766
         model-name: qwen-max
-
+# mongoDB连接配置
+spring:
+  .data:
+    .mongodb:
+      .uri: mongodb://mongo:mongo@localhost:27017/chat_memory_db
+#      .uri: mongodb://localhost:27017/chat_memory_db
 
 logging:
   level:

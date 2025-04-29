@@ -10,5 +10,4 @@ import dev.langchain4j.service.spring.AiServiceWiringMode;
 )
 public interface MemoryChatAssistant {
     String chat(String userMessage);
-
 }

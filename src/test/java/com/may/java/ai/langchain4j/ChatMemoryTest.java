@@ -89,9 +89,9 @@ public class ChatMemoryTest {
         String answer2 = separateChatAssistant.chat(1, "我是谁");
         System.out.println(answer2);
 
-        String answer3 = separateChatAssistant.chat(1, "我是小苗");
-        System.out.println(answer3);
-        String answer4 = separateChatAssistant.chat(1, "我是谁");
+//        String answer3 = separateChatAssistant.chat(2, "我是小苗");
+//        System.out.println(answer3);
+        String answer4 = separateChatAssistant.chat(2, "我是谁");
         System.out.println(answer4);
     }
 }
