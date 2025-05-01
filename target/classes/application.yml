@@ -27,10 +27,24 @@ langchain4j:
         model-name: qwen-max
 # mongoDB连接配置
 spring:
-  .data:
-    .mongodb:
-      .uri: mongodb://mongo:mongo@localhost:27017/chat_memory_db
-#      .uri: mongodb://localhost:27017/chat_memory_db
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: chat_memory_db
+      authentication-database: admin
+      username: mongo
+      password: mongo
+# MySQL连接配置
+# 基本数据源配置
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/guiguxiaozhi?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    username: root
+    password: 123123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # 开启 SQL 日志打印
+mybatis-plus:
+  configuration.log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 logging:
   level:
