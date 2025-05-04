@@ -1,10 +1,16 @@
-# AiService
+# learn by https://www.bilibili.com/video/BV1cpLTz1EVp 
+
+接入大模型：
+ * ollama本地deepseek
+ * 阿里百炼
+
+## AiService
 
 * 组装assistant接口以及其他组件（chatModel， chatMemoryProvider， tools等）
 
 * 利用反射机制创建一个实现Assistant接口的代理对象bean，通过这个bean处理所有输入输出的转换工作（输入字符串转换为UserMessage，调用聊天语言模型，输出AiMessage转换为字符串）
 
-## ChatMemory实现聊天记忆
+### ChatMemory实现聊天记忆
 
 * 配置类生成`chatMemoryProvider`bean，添加到AiService中
 
@@ -21,7 +27,7 @@ public ChatMemoryProvider chatMemoryProviderXiaoma() {
 }
 ```
 
-## Prompt 提示词
+### Prompt 提示词
 
 * @SystemMessage 系统提示词 添加到chat方法上
 
@@ -33,7 +39,7 @@ public ChatMemoryProvider chatMemoryProviderXiaoma() {
 
 * @UserMessage 用户消息 添加到chat方法上
 
-## Function Calling 函数调用 也叫 Tools工具
+### Function Calling 函数调用 也叫 Tools工具
 
 * 方法上添加Tools注解
 
@@ -56,11 +62,11 @@ double sum(
 }
 ```
 
-# RAG：检索增强生成
+## RAG：检索增强生成
 
 常用方法：全文搜索，向量搜索（语义搜索），混合搜索
 
-## 向量搜索 vector search
+### 向量搜索 vector search
 
 向量
 
@@ -68,7 +74,7 @@ double sum(
 
 相似度：方向和长度&#x20;
 
-## 过程：
+### 过程：
 
 1. 索引阶段
 
@@ -78,7 +84,7 @@ double sum(
 
 将用户查询转为向量 -> 在向量数据库中进行相似度匹配 -> 将用户查询和向量数据库中匹配到的相关内容一起交给LLM处理
 
-### 为什么文本分段？
+#### 为什么文本分段？
 
 1. 向量模型一次处理有限；
 
@@ -88,7 +94,7 @@ double sum(
 
 4. 提问中会有无关信息可能会干扰LLM，增加产生幻觉的几率
 
-## 文档加载器 loader
+### 文档加载器 loader
 
 ```java
 PathMatcher pathMatcher = FileSystems.getDefault()
@@ -97,24 +103,24 @@ List<Document> documents = FileSystemDocumentLoader
         .loadDocuments("E:/AA", pathMatcher, new TextDocumentParser());// 文档解析器
 ```
 
-## 文档解析器 parser
+### 文档解析器 parser
 
 ```java
 Document document = FileSystemDocumentLoader
         .loadDocument("E:/AA/test.pdf", new ApachePdfBoxDocumentParser());
 ```
 
-## 文档分割器 splitter
+### 文档分割器 splitter
 
 DocumentSplitter：段，行，句，单词，字符，正则，递归&#x20;
 
 每个文本片段最多不能超过300个token
 
-### 向量转换和向量存储
+#### 向量转换和向量存储
 
 Embedding Stores 嵌入存储
 
-## 基于向量数据库Pinecone的向量存储
+### 基于向量数据库Pinecone的向量存储
 
 1. 配置向量存储Bean`EmbeddingStore`
 
