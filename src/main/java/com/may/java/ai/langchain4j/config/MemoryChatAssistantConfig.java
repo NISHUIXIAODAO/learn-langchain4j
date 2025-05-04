@@ -10,7 +10,6 @@ public class MemoryChatAssistantConfig {
     @Bean
     ChatMemory chatMemory() {
         //设置聊天记忆记录的message数量
-        //xixiixixixi
         return MessageWindowChatMemory.withMaxMessages(10);
     }
 }

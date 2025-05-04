@@ -1,6 +1,8 @@
 server:
   port: 8080
 
+PINECONE_API_KEY: pcsk_6Tysj1_SPB3CBM5RY5gSci1xvVSJuNUtKP7ZnT99Ce9DjG5aKKap1yxALksPBxBQfJd4pC
+
 langchain4j:
   open-ai:
     chat-model:
@@ -25,6 +27,14 @@ langchain4j:
       chat-model:
         api-key: sk-321bce68acd3439985428b6202f8f766
         model-name: qwen-max
+      #集成阿里通义千问-通用文本向量-v3
+      embedding-model:
+        api-key: sk-321bce68acd3439985428b6202f8f766
+        model-name: text-embedding-v3
+      #集成阿里通义千问-流式输出
+      streaming-chat-model:
+        api-key: sk-321bce68acd3439985428b6202f8f766
+        model-name: qwen-plus
 # mongoDB连接配置
 spring:
   data:

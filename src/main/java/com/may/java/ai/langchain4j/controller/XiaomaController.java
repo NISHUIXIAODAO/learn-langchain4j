@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 
 @Tag(name = "小马")
 @RestController
@@ -15,8 +16,8 @@ public class XiaomaController {
     private XiaomaAgent xiaomaAgent;
 
     @Operation(summary = "对话")
-    @PostMapping("/chat")
-    public String chat(@RequestBody ChatForm chatForm) {
+    @PostMapping(value = "/chat", produces = "text/stream;charset=utf-8")
+    public Flux<String> chat(@RequestBody ChatForm chatForm) {
         return xiaomaAgent.chat(chatForm.getMemoryId(),chatForm.getMessage());
     }
 }
